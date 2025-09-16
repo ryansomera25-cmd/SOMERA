@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Seatwork</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 40px;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    img {
+      margin: 10px;
+      width: 300px; /* sets all images to 300px wide */
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Seatwork</h1>
+  <p>Here are 5 simple JavaScript examples using buttons and images.</p>
+
+  <h3>1. Button Click Alert</h3>
+  <button onclick="showMessage()">Click Me</button>
+
+  <h3>2. Change Image on Click</h3>
+  <img id="myImage" src="https://images.pexels.com/photos/6963589/pexels-photo-6963589.jpeg" 
+       onclick="changeImage()" style="cursor:pointer;">
+
+  <h3>3. Change Background Color</h3>
+  <button onclick="changeColor()">Change Background</button>
+
+  <h3>4. Show/Hide an Image</h3>
+  <button onclick="toggleImage()">Show/Hide Image</button><br>
+  <img id="toggleImg" src="https://images.pexels.com/photos/6963589/pexels-photo-6963589.jpeg">
+
+  <h3>5. Button Counter</h3>
+  <button onclick="countClicks()">Click Counter</button>
+  <p id="counter">You clicked 0 times.</p>
+
+  <script>
+    function showMessage() {
+      alert("Hello! You clicked the button.");
+    }
+
+    function changeImage() {
+      document.getElementById("myImage").src = "https://images.pexels.com/photos/5076510/pexels-photo-5076510.jpeg";
+    }
+
+    function changeColor() {
+      document.body.style.backgroundColor = 
+        document.body.style.backgroundColor === "lightblue" ? "white" : "lightblue";
+    }
+
+    function toggleImage() {
+      let img = document.getElementById("toggleImg");
+      img.style.display = (img.style.display === "none") ? "block" : "none";
+    }
+
+    let count = 0;
+    function countClicks() {
+      count++;
+      document.getElementById("counter").innerHTML = "You clicked " + count + " times.";
+    }
+  </script>
+
+</body>
+</html>
