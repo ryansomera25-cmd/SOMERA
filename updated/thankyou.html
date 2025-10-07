@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thank You</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Object to store thank you message
+    const thankYouMessage = {
+      message: "Thank you for reaching out! We appreciate your feedback."
+    };
+
+    // Function to display the thank you message
+    function displayThankYouMessage() {
+      document.getElementById("thank-you-message").innerText = thankYouMessage.message;
+    }
+  </script>
+</head>
+<body onload="displayThankYouMessage();">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="products.html">Products</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact Us</a>
+  </nav>
+
+  <h1>Thank You!</h1>
+  <p id="thank-you-message"></p> <!-- Dynamic Thank You Message -->
+</body>
+</html>

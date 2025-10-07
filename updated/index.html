@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About Us</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    const companyInfo = {
+      name: "Whey Protein Hub",
+      mission: "promoting health and fitness through the power of whey protein."
+    };
+
+    function displayCompanyInfo() {
+      const companyParagraph = document.getElementById("company-info");
+      companyParagraph.innerHTML = `Welcome to <strong>${companyInfo.name}</strong>! We are passionate about ${companyInfo.mission}`;
+    }
+  </script>
+</head>
+<body onload="displayCompanyInfo();">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="products.html">Products</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact Us</a>
+  </nav>
+
+  <h1>About Us</h1>
+  <p id="company-info"></p>
+</body>
+</html>

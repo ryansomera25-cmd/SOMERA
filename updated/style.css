@@ -1,0 +1,92 @@
+/* General body styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #a8edea, #fed6e3);
+  color: #333;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navigation bar */
+nav {
+  background-color: #333;
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  flex-shrink: 0;
+}
+
+nav a {
+  color: white;
+  margin: 0 20px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ff4081;
+}
+
+/* Headings */
+h1 {
+  margin-top: 40px;
+  font-size: 3em;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  color: #222;
+}
+
+h2 {
+  color: #444;
+  margin-top: 30px;
+  font-weight: 700;
+}
+
+/* Paragraphs */
+p {
+  max-width: 700px;
+  margin: 20px auto;
+  font-size: 1.2em;
+  line-height: 1.6;
+  color: #444;
+  text-align: justify;
+}
+
+/* Links inside paragraphs or bold text */
+p b, p strong {
+  color: #222;
+}
+
+/* Images */
+img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  margin: 15px 10px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* Forms for Contact page */
+form {
+  max-width: 400px;
+  margin: 30px auto 50px;
+  text-align: left;
+  background: rgba(255,255,255,0.85);
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+input

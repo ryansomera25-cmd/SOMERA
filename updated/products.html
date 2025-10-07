@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Products - Whey Protein</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    const products = [
+      {
+        name: "Whey Protein Powder",
+        description: "A high-quality protein source ideal for muscle growth and recovery. Available in chocolate, vanilla, and strawberry flavors.",
+        price: 30.50,
+        image: "protein-gym.jpg"
+      },
+      {
+        name: "Whey Protein Bars",
+        description: "If you are craving some desserts, this is the healthiest way to eat it.",
+        price: 4.00,
+        image: "protein bar.jpg"
+      },
+      {
+        name: "Whey Protein Shakes",
+        description: "Ready-to-drink shakes that provide quick nutrition anytime, anywhere.",
+        price: 5.00,
+        image: "protein-shakes.jpg"
+      }
+    ];
+
+    function formatPrice(price) {
+      return `$${price.toFixed(2)}`;
+    }
+
+    function calculateTotals() {
+      let grandTotal = 0;
+      products.forEach((product, index) => {
+        const quantityInput = document.getElementById(`quantity-${index}`);
+        const quantity = parseInt(quantityInput.value) || 0;
+        const totalPrice = product.price * quantity;
+
+        document.getElementById(`total-price-${index}`).innerText = formatPrice(totalPrice);
+        grandTotal += totalPrice;
+      });
+
+      document.getElementById('grand-total').innerText = formatPrice(grandTotal);
+    }
+
+    function displayProducts() {
+      const productList = document.getElementById("product-list");
+      products.forEach((product, index) => {
+        const productDiv = document.createElement("div");
+        productDiv.classList.add("product");
+        productDiv.style.border = "1px solid #ccc";
+        productDiv.style.padding = "15px";
+        productDiv.style.margin = "15px auto";
+        productDiv.style.maxWidth = "350px";
+        productDiv.innerHTML = `
+          <h3>${product.name}</h3>
+          <img src="${product.image}" alt="${product.name}" width="300" height="200">
+          <p>${product.description}</p>
+          <p><strong>Price:</strong> ${formatPrice(product.price)}</p>
+          <label for="quantity-${index}">Quantity:</label>
+          <input type="number" id="quantity-${index}" name="quantity-${index}" value="0" min="0" style="width: 60px;" oninput="calculateTotals()">
+          <p><strong>Total Price:</strong> <span id="total-price-${index}">${formatPrice(product.price)}</span></p>
+        `;
+        productList.appendChild(productDiv);
+      });
+
+      // Grand total
+      const grandTotalDiv = document.createElement("div");
+      grandTotalDiv.style.marginTop = "20px";
+      grandTotalDiv.style.fontSize = "1.2em";
+      grandTotalDiv.style.fontWeight = "bold";
+      grandTotalDiv.innerHTML = `
+        Grand Total: <span id="grand-total">${formatPrice(products.reduce((sum, p) => sum + p.price, 0))}</span>
+      `;
+      productList.appendChild(grandTotalDiv);
+
+      
+      const checkoutDiv = document.createElement("div");
+      checkoutDiv.style.marginTop = "25px";
+      checkoutDiv.innerHTML = `
+        <button id="checkout-btn" style="padding: 10px 20px; font-size: 1em;">Checkout</button>
+      `;
+      productList.appendChild(checkoutDiv);
+
+      document.getElementById('checkout-btn').addEventListener('click', checkout);
+    }
+
+    
+    function checkout() {
+      let orderSummary = "Order Summary:\n\n";
+      let grandTotal = 0;
+      let hasItems = false;
+
+      products.forEach((product, index) => {
+        const quantity = parseInt(document.getElementById(`quantity-${index}`).value) || 0;
+        if (quantity > 0) {
+          const totalPrice = product.price * quantity;
+          orderSummary += `${product.name} x ${quantity} = ${formatPrice(totalPrice)}\n`;
+          grandTotal += totalPrice;
+          hasItems = true;
+        }
+      });
+
+      if (!hasItems) {
+        alert("Please select at least one product quantity to checkout.");
+        return;
+      }
+
+      orderSummary += `\nGrand Total: ${formatPrice(grandTotal)}`;
+      alert(orderSummary);
+    }
+
+    window.onload = () => {
+      displayProducts();
+      calculateTotals();
+    };
+  </script>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="products.html">Products</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact Us</a>
+  </nav>
+
+  <h1>Our Products</h1>
+  <p>Here are some of our  whey protein products that will support your health and fitness:</p>
+
+  <div id="product-list"></div>
+
+  <p><b>All of our products are made with care to help us reach our fitness goals.</b></p>
+</body>
+</html>
